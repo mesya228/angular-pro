@@ -1,0 +1,17 @@
+<div class="col">
+  <form (ngSubmit)="formSubmit(form.value)" #form="ngForm">
+    <h3>{{formTitle}}</h3>
+    <ng-content select="h3"></ng-content>
+    <label>
+      Email address
+      <input type="email" name="email" #email ngModel>
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" #password ngModel>
+    </label>
+    <app-auth-remember></app-auth-remember>
+    <app-auth-message [style.display]="isAuthRemember ? 'block' : 'none'"></app-auth-message>
+    <button class="btn">{{formTitle}}</button>
+  </form>
+</div>

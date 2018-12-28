@@ -4,21 +4,21 @@ import { FormsModule }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OneComponent } from './one/one.component';
-import { TwoComponent } from './two/two.component';
+import { AuthFormComponent } from './auth-form/auth-form.component';
+import { AuthRememberComponent } from './auth-remember/auth-remember.component';
+import { AuthMessageComponent } from './auth-message/auth-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OneComponent,
-    TwoComponent,
+    AuthFormComponent,
+    AuthRememberComponent,
+    AuthMessageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-  ],
-  entryComponents: [
   ],
   providers: [],
   bootstrap: [AppComponent]
