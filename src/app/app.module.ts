@@ -4,14 +4,12 @@ import { FormsModule }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OneComponent } from './one/one.component';
-import { TwoComponent } from './two/two.component';
+import { CreditCardDirective } from './credit-card-directive/credit-card.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OneComponent,
-    TwoComponent,
+    CreditCardDirective,
   ],
   imports: [
     BrowserModule,

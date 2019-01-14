@@ -1,9 +1,7 @@
 <div class="container app">
-  <button class="btn" (click)="addProp()">Add property</button>
-  <button class="btn" (click)="changeUser()">Change user object</button>
-  <button class="btn" (click)="changeName()">Change name property</button>
-  <div class="row">
-    <app-one class="col" [user]="user"></app-one>
-    <app-two class="col" [user]="user"></app-two>
+  <div class="input-field">
+    <input id="creditCardInput" placeholder="Enter your credit card number" type="text" class="" appCreditCard>
+    <label for="creditCardInput">Credit Card Number</label>
+    <span class="helper-text" data-error="Only numbers"></span>
   </div>
 </div>
