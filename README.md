@@ -1,27 +1,28 @@
-# Pro
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Children
+`View` - what we see in the component itself
+`Content` - what we get from parent component by ng-content
+`@ViewChild/@ViewChildren`
+    Get any view elements by `#` or by import component to element: `import { TestComponent } from '../test/test.component'` 
+    And then get it by: `@ViewChildren(TestComponent) components: QueryList<TestComponent>`
+`Renderrer`
+    Technology that allow to work with DOM such as set attributes, create elements etc.
+## Dynamic rendering
+`ComponentFactoryResolver`
+    Component for creating factories that can create components by:
+    `const testFactory = this.resolver.resolveComponentFactory(TestComponent)`
+    And than get element in which one you will push created elements: `@ViewChild('insertBlock', { read: ViewContainerRef }) insertBlock: ViewContainerRef`
+    Create element: `this.insertBlock.createComponent(TestComponent)`
+`ComponentRef`
+    Variable that allow you to get even not created block: `component: ComponentRef<TestComponent>`
+    Create element: `this.component = this.authForm.createComponent(testFactory, 0)` - where 0 is element number
+    And work with it:
+    `this.component.instance.anyAction.subscribe()`
+    `this.component.instance.someData = 'Test'`
+## Templates
+By creating template in html: `<ng-template #tmpl let-name let-location="location"> {{name}}: {{location}} </ng-template>`
+    And block where you want to create this template: `<div #entry></div>`
+    You can create and insert block in `#entry` div: `this.entry.createEmbeddedView(this.tmpl, { $implicit: 'Sergey Miller', location: 'Kyiv, Ukraine'})`
+And also you can just use `ng-container` with attribute `[ngTemplateOutlet]="tmpl"` and dont render any blocks by `createEmbeddedView`
+    If you use this method you can pass data in container by attribute: `[ngTemplateOutletContext]="data"`
+## ViewEncapsulation
+`ViewEncapsulation`

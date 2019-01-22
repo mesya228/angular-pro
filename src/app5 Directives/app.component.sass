@@ -1,0 +1,28 @@
+.tooltip-container
+    .tooltip-hover
+        font-weight: bold
+        cursor: pointer
+        color: #717aec
+    ::ng-deep .tooltip
+        display: none
+        position: absolute
+        right: -210px
+        top: 0
+        width: 200px
+        height: 30px
+        background-color: #797979
+        text-align: center
+        color: #fff
+        border-radius: 40px 10px 10px 0px
+        padding: 5px
+        line-height: 20px
+        transition: .5s ease
+    ::ng-deep .tooltip-active
+        display: block
+        animation: .5s showTooltip
+
+@keyframes showTooltip
+    from
+        opacity: 0
+    to
+        opacity: 1

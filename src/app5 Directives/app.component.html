@@ -1,0 +1,21 @@
+<div class="container app">
+  <div class="input-field">
+    <input id="creditCardInput" placeholder="Enter your credit card number" type="text" appCreditCard>
+    <label for="creditCardInput">Credit Card Number</label>
+    <span class="helper-text" data-error="Only numbers"></span>
+  </div>
+  <div class="input-field">
+    <input id="creditCardPassword" placeholder="Enter your password" type="text">
+    <label for="creditCardPassword"
+      tooltip="3 digits, back of your card"
+      #passTooltip="tooltip">
+      Password
+      <span
+        class="tooltip-hover"
+        (mouseover)="passTooltip.show()"
+        (mouseout)="passTooltip.hide()">
+        (?)
+      </span>
+    </label>
+  </div>
+</div>

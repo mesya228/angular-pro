@@ -1,42 +1,13 @@
-<div class="container app row">
-
-  <div class="col s12">
-    <div class="switch">
-      <p>Animation</p>
-      <label>
-        Off 
-        <input type="checkbox" (click)="changeAnimation()" [checked]="!animationsDisabled">
-        <span class="lever"></span>
-        On
-      </label>
-    </div>
-  </div>
-
-  <div class="col s6">
-    <button class="btn"
-      (click)="clickBtn()"
-      [@buttonState]="state">
-      {{state ? 'Hide' : 'Show'}}
-    </button>
-    <div *ngIf="state" 
-      @myInsertRemoveTrigger
-      (@myInsertRemoveTrigger.done)="doneAnimation($event)">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim nobis aut omnis placeat a sed velit assumenda, ea temporibus nam.</p> 
-    </div>
-  </div>
-
-  <div class="col s6">
-    <button class="btn red"
-      (click)="decreaseNum()">
-      -
-    </button>
-    <button class="btn"
-      (click)="increaseNum()">
-      +
-    </button>
-    <p>COUNT: 
-      <span [@countChange]="count">{{count}}</span>
-    </p>
-  </div>
-
+<div class="container app">
+  <ul>
+    <li *myFor="let item of items; let i = index">
+      {{i}} Member: {{item.name | json}}
+    </li>
+    <hr>
+    <ng-template myFor [myForOf]="items" let-item let-i="index">
+      <li>
+        {{i}} Member: {{item.name | json}}
+      </li>
+    </ng-template>
+  </ul>
 </div>

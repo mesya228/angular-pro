@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef, AfterContentInit, ComponentFactoryResolver, ComponentRef, TemplateRef } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, AfterContentInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
