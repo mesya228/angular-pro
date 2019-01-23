@@ -1,0 +1,9 @@
+<div class="container app">
+    <button class="btn" (click)="addProp()">Add Property</button>
+    <button class="btn" (click)="changeUser()">Change User</button>
+    <button class="btn" (click)="changeName()">Change Name</button>
+    <div class="row">
+        <app-one [user]="user"></app-one>
+        <app-two [user]="user"></app-two>
+    </div>
+</div>

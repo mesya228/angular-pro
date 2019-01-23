@@ -1,0 +1,14 @@
+<div class="container app">
+  <ul>
+    <!-- Exemples of using the same directive but by different ways -->
+    <li *myFor="let item of items; let i = index">
+      {{i}} Member: {{item.name | json}}
+    </li>
+    <hr>
+    <ng-template myFor [myForOf]="items" let-item let-i="index">
+      <li>
+        {{i}} Member: {{item.name | json}}
+      </li>
+    </ng-template>
+  </ul>
+</div>

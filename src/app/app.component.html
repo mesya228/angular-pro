@@ -1,13 +1,7 @@
 <div class="container app">
-  <ul>
-    <li *myFor="let item of items; let i = index">
-      {{i}} Member: {{item.name | json}}
-    </li>
-    <hr>
-    <ng-template myFor [myForOf]="items" let-item let-i="index">
-      <li>
-        {{i}} Member: {{item.name | json}}
-      </li>
-    </ng-template>
-  </ul>
+    <div *ngFor="let file of files | filter:query">
+        <p>{{file.name}}</p>
+        <p>{{file.size}}</p>
+    </div>
+    <input type="text" [(ngModel)]="query">
 </div>

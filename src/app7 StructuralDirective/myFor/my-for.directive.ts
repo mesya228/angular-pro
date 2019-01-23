@@ -7,8 +7,12 @@ export class MyForDirective {
 
   @Input()
   set myForOf(collection) {
+    this.view.clear();
     collection.forEach((item, index: number) => {
-      this.view.createEmbeddedView(this.template);
+      this.view.createEmbeddedView(this.template, {
+        $implicit: item,
+        index: index
+      });
     });
   }
 

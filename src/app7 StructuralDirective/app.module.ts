@@ -4,12 +4,12 @@ import { FormsModule }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FilterPipe } from './filter/filter.pipe';
+import { MyForDirective } from './myFor/my-for.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterPipe,
+    MyForDirective,
   ],
   imports: [
     BrowserModule,

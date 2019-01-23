@@ -4,12 +4,14 @@ import { FormsModule }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FilterPipe } from './filter/filter.pipe';
+import { OneComponent } from './one/one.component';
+import { TwoComponent } from './two/two.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterPipe,
+    OneComponent,
+    TwoComponent,
   ],
   imports: [
     BrowserModule,
