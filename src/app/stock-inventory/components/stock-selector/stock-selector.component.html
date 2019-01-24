@@ -1,0 +1,11 @@
+<div [formGroup]="parent">
+    <div class="input-field col s12" formGroupName="selector">
+        <select formControlName="productId">
+            <option value="" disabled selected>Choose your option</option>
+            <option [value]="product.id" *ngFor="let product of products">
+                {{product.name}}
+            </option>
+        </select>
+        <label>Materialize Select</label>
+    </div>
+</div>

@@ -1,18 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filesize'
+  name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
 
   transform(list, query) {
-    if (list) {
+    if (query) {
       return list.filter(item => {
-        if (list.title.toLowerCase().includes(query.toLowerCase())) {
-          return list;
+        if (item.title.toLowerCase().includes(query.toLowerCase())) {
+          return item;
         }
       });
     }
+    return list;
   }
 
 }

@@ -53,5 +53,7 @@ Allow to create your own directive such as `*ngFor`
     and add myForOf Input in directive: `@Input() set myForOf(collection)`
     where you can get collection and work with it by createEmbeddedView for every element:
     `this.view.createEmbeddedView(this.template, {$implicit: item,index: index})`
+## 8 Filter
+Filter allow to filter, or edit data by using it like this: `let item of items | filter:query` or `{{title | filter}}`
     
     

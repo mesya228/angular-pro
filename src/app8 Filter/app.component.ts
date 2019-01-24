@@ -6,8 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass'],
 })
 export class AppComponent {
+  
+  query: string;
 
-  constructor() { 
+  items = [
+    {title: 'Item 1'},
+    {title: 'Item 2'},
+    {title: 'Item 3'}
+  ]
+
+  constructor() {
+    
   }
   
 }

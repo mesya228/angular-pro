@@ -1,7 +1,3 @@
 <div class="container app">
-    <div *ngFor="let file of files | filter:query">
-        <p>{{file.name}}</p>
-        <p>{{file.size}}</p>
-    </div>
-    <input type="text" [(ngModel)]="query">
+    <app-stock-inventory></app-stock-inventory>
 </div>

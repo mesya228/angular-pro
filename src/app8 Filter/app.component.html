@@ -1,0 +1,6 @@
+<div class="container app">
+    <div *ngFor="let item of items | filter:query">
+        <p>{{item.title}}</p>
+    </div>
+    <input type="text" [(ngModel)]="query">
+</div>
