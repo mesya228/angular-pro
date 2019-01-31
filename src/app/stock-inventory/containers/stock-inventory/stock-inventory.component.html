@@ -7,11 +7,13 @@
 
     <app-stock-selector
       [parent]="form"
-      [products]="products">
+      [products]="products"
+      (addedStock)="addStock($event)">
     </app-stock-selector>
     
     <app-stock-products
-      [parent]="form">
+      [parent]="form"
+      (deletedStock)="deleteStock($event)">
     </app-stock-products>
 
     <button class="btn"

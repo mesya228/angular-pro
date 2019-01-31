@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Product } from '../../models/product.class';
 
-import * as M from 'node_modules/materialize-css'
+import * as M from 'node_modules/materialize-css';
 
 @Component({
   selector: 'app-stock-selector',
@@ -13,13 +13,18 @@ export class StockSelectorComponent {
   
   @Input() parent: FormGroup;
   @Input() products: Product[];
+  @Output() addedStock: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
   }
   
   ngAfterViewInit() {
     var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
+    M.FormSelect.init(elems);
+  }
+
+  addToStock() {
+    this.addedStock.emit(this.parent.get('selector').value);
   }
 
 }

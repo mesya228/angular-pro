@@ -1,6 +1,17 @@
 <div [formGroup]="parent">
-    <div formGroupName="stock">
-
-    </div>
+    <ul class="collection" formArrayName="stock">
+        <li class="collection-item row" 
+            *ngFor="let stock of stocks; let i = index" 
+            [formGroupName]="i">
+            <span class="col s5">
+                {{stock.value.productId}}
+            </span>
+            <div class="input-field col s5">
+                <input placeholder="Amount" id="quantity" type="number" class="validate" formControlName="quantity">
+                <label for="quantity">Quantity</label>
+            </div>
+            <button type="button" class="btn col s2" (click)="removeStock(i)">Remove</button>
+        </li>
+    </ul>
 </div>
   

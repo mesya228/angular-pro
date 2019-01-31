@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-stock-products',
@@ -9,7 +9,16 @@ import { FormGroup } from '@angular/forms';
 export class StockProductsComponent {
 
   @Input() parent: FormGroup;
+  @Output() deletedStock: EventEmitter<any> = new EventEmitter<any>();
+  get stocks() {
+    return (this.parent.get('stock') as FormArray).controls;
+  }
 
-  constructor() { }
+  constructor() {
+  }
+
+  removeStock(i: number) {
+    this.deletedStock.emit(i);
+  }
 
 }

@@ -1,6 +1,6 @@
 ## 1 Children
 `View` - what we see in the component itself.
-`Content` - what we get from parent component by ng-content.
+`Content` - what we get from parent component.
 `@ViewChild/@ViewChildren`
     Get any view elements by `#` or by import component to element: `import { TestComponent } from '../test/test.component'`.
     And then get it by: `@ViewChildren(TestComponent) components: QueryList<TestComponent>`.
@@ -55,5 +55,9 @@ Allow to create your own directive such as `*ngFor`
     `this.view.createEmbeddedView(this.template, {$implicit: item,index: index})`
 ## 8 Filter
 Filter allow to filter, or edit data by using it like this: `let item of items | filter:query` or `{{title | filter}}`
-    
+## Forms
+`FormBuilder` - easy work with forms, get values, validate etc.
+Create group or array : `this.formBuilder.group([])` `this.formBuilder.array([])`
+Create field with validators: `field: ['', [Validators.minLength(3), Validators.maxLength(10), Validatros.patters('/REGEX/'), Validators.required]]`
+In html you must add `formGroup` to form element, `formGroupName` to formGroup block and `formControlName` to any input element.
     
