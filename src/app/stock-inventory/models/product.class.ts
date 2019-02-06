@@ -3,3 +3,8 @@ export class Product {
     price: number;
     name: string;
 }
+
+export class Item {
+    productId: number;
+    quantity: number;
+}

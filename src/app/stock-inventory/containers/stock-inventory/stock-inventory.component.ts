@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { Product } from '../../models/product.class';
+import { StockInventoryService } from '../../services/stock-inventory/stock-inventory.service';
 
 @Component({
   selector: 'app-stock-inventory',
@@ -9,28 +10,26 @@ import { Product } from '../../models/product.class';
 })
 export class StockInventoryComponent {
 
-  products: Product[] = [
-    {id: 1, price: 1, name: 'Product 1'},
-    {id: 2, price: 2, name: 'Product 2'},
-    {id: 3, price: 3, name: 'Product 3'},
-  ]
+  products: Product[];
 
   form: FormGroup;
   stock: FormArray;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private stockInventoryService: StockInventoryService) {
+    this.products = this.stockInventoryService.products;
     this.form = this.formBuilder.group({
       store: this.formBuilder.group({
         branch: ['', [Validators.minLength(3), Validators.maxLength(10), Validators.required]],
         code: ['', [Validators.minLength(3), Validators.maxLength(10), Validators.required]]
       }),
       selector: this.createStock(),
-      stock: this.formBuilder.array([
-        this.createStock(1, 2),
-        this.createStock(2, 10),
-      ])
+      stock: this.formBuilder.array([])
     })
     this.stock = this.form.get('stock') as FormArray;
+    for (var i = 0; i < this.stockInventoryService.carts.length; i++) {
+      this.addStock(this.stockInventoryService.carts[i]);
+    }
   }
 
   onSubmit() {
@@ -44,8 +43,8 @@ export class StockInventoryComponent {
     })
   }
 
-  addStock(e) {
-    this.stock.push(this.createStock(e.productId, e.quantity))
+  addStock({productId, quantity}) {
+    this.stock.push(this.createStock(productId, quantity))
   }
 
   deleteStock(e) {
