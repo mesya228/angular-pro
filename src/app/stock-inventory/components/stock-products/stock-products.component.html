@@ -4,7 +4,7 @@
             *ngFor="let stock of stocks; let i = index" 
             [formGroupName]="i">
             <span class="col s5">
-                {{stock.value.productId}}
+                {{ getProduct(stock.value.productId).name}}
             </span>
             <div class="input-field col s5">
                 <input placeholder="Amount" id="quantity" type="number" class="validate" formControlName="quantity">

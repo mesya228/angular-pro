@@ -11,6 +11,7 @@ import { StockInventoryService } from '../../services/stock-inventory/stock-inve
 export class StockInventoryComponent {
 
   products: Product[];
+  productsMap;
 
   form: FormGroup;
   stock: FormArray;
@@ -18,6 +19,7 @@ export class StockInventoryComponent {
   constructor(private formBuilder: FormBuilder,
               private stockInventoryService: StockInventoryService) {
     this.products = this.stockInventoryService.products;
+    this.productsMap = this.stockInventoryService.productsMap;
     this.form = this.formBuilder.group({
       store: this.formBuilder.group({
         branch: ['', [Validators.minLength(3), Validators.maxLength(10), Validators.required]],

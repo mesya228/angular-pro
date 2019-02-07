@@ -9,12 +9,17 @@ import { FormGroup, FormArray } from '@angular/forms';
 export class StockProductsComponent {
 
   @Input() parent: FormGroup;
+  @Input() productsMap: any;
   @Output() deletedStock: EventEmitter<any> = new EventEmitter<any>();
   get stocks() {
     return (this.parent.get('stock') as FormArray).controls;
   }
 
   constructor() {
+  }
+
+  getProduct(productId: number) {
+    return this.productsMap.get(productId);
   }
 
   removeStock(i: number) {

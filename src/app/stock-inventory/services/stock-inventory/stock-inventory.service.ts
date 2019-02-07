@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, forkJoin, Observer } from 'rxjs';
-import { Product, Item } from '../../models/product.class';
+import { Product, Item, ProductMap } from '../../models/product.class';
 import { map } from 'rxjs/operators';
 
 
@@ -12,6 +12,7 @@ export class StockInventoryService {
 
   carts: Item[];
   products: Product[];
+  productsMap: any;
 
   constructor(private http: HttpClient) {
   }
@@ -25,6 +26,7 @@ export class StockInventoryService {
       .subscribe(([carts, products]) => {
         this.carts = carts;
         this.products = products;
+        this.productsMap = new ProductMap(products).productsMap;
 
         observer.next(null);
         observer.complete();
