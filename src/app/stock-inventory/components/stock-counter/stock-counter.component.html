@@ -1,0 +1,15 @@
+<div class="counter" tabindex="0"
+  [ngClass]="{focused: focus}"
+  (keydown)="onKeyDown($event)"
+  (blur)="onBlur($event)"
+  (focus)="onFocus($event)">
+  <p>{{value}}</p>
+  <div class="buttons">
+    <button type="button" class="increment"
+      (click)="increment()"
+      [disabled]="value == max">+</button>
+    <button type="button" class="decrement"
+      (click)="decrement()"
+      [disabled]="value == min">-</button>  
+  </div>
+</div>

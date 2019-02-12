@@ -15,16 +15,36 @@ export class StockSelectorComponent {
   @Input() products: Product[];
   @Output() addedStock: EventEmitter<any> = new EventEmitter<any>();
 
+  selectinput;
+
   constructor() {
   }
   
   ngAfterViewInit() {
+    this.initMatSelect();
+  }
+
+  initMatSelect() {
     var elems = document.querySelectorAll('select');
-    M.FormSelect.init(elems);
+    this.selectinput = M.FormSelect.init(elems);
   }
 
   addToStock() {
     this.addedStock.emit(this.parent.get('selector').value);
+    this.parent.get('selector').reset({
+      productId: '',
+      quantity: 10
+    });
+    this.initMatSelect();
+    console.log(this.selectinput[0]);
+  }
+
+  get getNotSelected() {
+    return !this.parent.get('selector.productId').value;
+  }
+
+  get getStockExists() {
+    return this.parent.hasError('stockExists') && this.parent.get('selector.productId').dirty;
   }
 
 }

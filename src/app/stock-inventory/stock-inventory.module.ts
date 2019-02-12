@@ -4,12 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StockInventoryRoutingModule } from './stock-inventory-routing.module';
 
+import { StockInventoryService } from './services/stock-inventory/stock-inventory.service';
+
 import { StockInventoryComponent } from './containers/stock-inventory/stock-inventory.component';
 import { StockBranchComponent } from './components/stock-branch/stock-branch.component';
 import { StockSelectorComponent } from './components/stock-selector/stock-selector.component';
 import { StockProductsComponent } from './components/stock-products/stock-products.component';
+import { StockCounterComponent } from './components/stock-counter/stock-counter.component';
 
-import { StockInventoryService } from './services/stock-inventory/stock-inventory.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { StockInventoryService } from './services/stock-inventory/stock-inventor
     StockBranchComponent,
     StockSelectorComponent,
     StockProductsComponent,
+    StockCounterComponent,
   ],
   imports: [
     CommonModule,

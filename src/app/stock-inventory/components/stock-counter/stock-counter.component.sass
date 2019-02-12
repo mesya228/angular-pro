@@ -1,0 +1,29 @@
+.counter
+    width: 75px
+    display: flex
+    justify-content: space-between
+    border-radius: 5px
+    background-color: #dbdbdb
+    &.focused
+        box-shadow: 4px 4px 3px #045
+    p
+        width: 100%
+        font-size: 18px
+        line-height: 10px
+        text-align: center
+    .buttons
+        display: grid
+    .buttons button
+        border: 0
+        cursor: pointer
+        color: #fff
+        font-weight: bold
+    .buttons button:disabled
+        background-color: #dbdbdb
+        cursor: default
+    .increment
+        background-color: #2bbbad
+        border-radius: 0 5px 0 0
+    .decrement
+        background-color: #2bbbad
+        border-radius: 0 0 5px 0

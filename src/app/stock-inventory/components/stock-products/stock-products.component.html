@@ -3,14 +3,21 @@
         <li class="collection-item row" 
             *ngFor="let stock of stocks; let i = index" 
             [formGroupName]="i">
-            <span class="col s5">
+            <span class="col s4">
                 {{ getProduct(stock.value.productId).name}}
             </span>
-            <div class="input-field col s5">
+            <span class="col s3">
+                {{ getProduct(stock.value.productId).price * this.parent.get('stock').value[i].quantity | currency: 'USD'}}
+            </span>
+            <div class="input-field col s3">
                 <input placeholder="Amount" id="quantity" type="number" class="validate" formControlName="quantity">
-                <label for="quantity">Quantity</label>
             </div>
             <button type="button" class="btn col s2" (click)="removeStock(i)">Remove</button>
+        </li>
+        <li class="collection-item row">
+            <span class="col s4">Total:</span>
+            <span class="col s3">{{totals.price | currency: 'USD'}}</span>
+            <span class="col s2">{{totals.quantity}}</span>
         </li>
     </ul>
 </div>

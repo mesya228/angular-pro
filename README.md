@@ -55,9 +55,10 @@ Allow to create your own directive such as `*ngFor`
     `this.view.createEmbeddedView(this.template, {$implicit: item,index: index})`
 ## 8 Filter
 Filter allow to filter, or edit data by using it like this: `let item of items | filter:query` or `{{title | filter}}`
-## Forms
+## 9 Forms
 `FormBuilder` - easy work with forms, get values, validate etc.
 Create group or array : `this.formBuilder.group([])` `this.formBuilder.array([])`
 Create field with validators: `field: ['', [Validators.minLength(3), Validators.maxLength(10), Validatros.patters('/REGEX/'), Validators.required]]`
 In html you must add `formGroup` to form element, `formGroupName` to formGroup block and `formControlName` to any input element.
+
     
