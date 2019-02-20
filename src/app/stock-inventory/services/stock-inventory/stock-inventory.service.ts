@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Observable, forkJoin, Observer } from 'rxjs';
+import { Observable, forkJoin, Observer, of } from 'rxjs';
 import { Product, Item } from '../../models/product.class';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -12,7 +12,6 @@ export class StockInventoryService {
 
   carts: Item[];
   products: Product[];
-  branches;
 
   constructor(private http: HttpClient) {
   }
@@ -22,12 +21,10 @@ export class StockInventoryService {
       forkJoin(
         this.getCarts(),
         this.getProducts(),
-        this.getBranches()
       )
-      .subscribe(([carts, products, branches]) => {
+      .subscribe(([carts, products]) => {
         this.carts = carts;
         this.products = products;
-        this.branches = branches;
 
         observer.next(null);
         observer.complete();
@@ -52,14 +49,15 @@ export class StockInventoryService {
       )
   }
 
-  getBranches(): Observable<Item[]> {
+  checkBranchId(id: string): Observable<Item[]> {
     let options = {
       params: new HttpParams()
-        .set('branch', '1')
+        .set('branch', id)
     };
     return this.http.get<Item[]>('http://localhost:8080/branches', options)
       .pipe(
-        map(branches => branches)
-      )
+        map(branches => branches),
+        catchError(e => of(null))
+      );
   }
 }

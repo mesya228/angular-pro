@@ -16,7 +16,10 @@ export class StockBranchComponent {
     return this.parent.get(`store.${name}`).hasError('required') && this.parent.get(`store.${name}`).touched;
   }
   checkInvalid() {
-    return this.parent.get('store.branch').hasError('invalidBranch') && this.parent.get('store.branch').dirty;
+    return this.parent.get('store.branch').hasError('invalidBranch') && this.parent.get('store.branch').dirty && !this.checkRequired('branch');
+  }
+  checkUnknown() {
+    return this.parent.get('store.branch').hasError('unknownBranch') && this.parent.get('store.branch').dirty;
   }
 
 }

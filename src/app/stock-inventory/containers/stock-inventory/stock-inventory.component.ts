@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { FormGroup, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormArray, FormBuilder, AbstractControl } from '@angular/forms';
 
 import { StockInventoryService } from '../../services/stock-inventory/stock-inventory.service';
 
 import { Product, Item } from '../../models/product.class';
 
 import { StockValidators } from './stock-inventory.validators';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-stock-inventory',
@@ -28,7 +30,11 @@ export class StockInventoryComponent {
 
     this.form = this.formBuilder.group({
       store: this.formBuilder.group({
-        branch: ['', [Validators.minLength(3), Validators.maxLength(10), Validators.required, StockValidators.checkBranch]],
+        branch: [
+          '', 
+          [Validators.minLength(3), Validators.maxLength(10), Validators.required, StockValidators.checkBranch],
+          [this.validateBranch.bind(this)]
+        ],
         code: ['', [Validators.minLength(3), Validators.maxLength(10), Validators.required]]
       }),
       selector: this.createStock(),
@@ -43,6 +49,16 @@ export class StockInventoryComponent {
     this.form.get('stock').valueChanges.subscribe(values => {
       this.calculateTotal(values);
     });
+  }
+
+  validateBranch(control: AbstractControl) {
+    return this.stockInventoryService.checkBranchId(control.value)
+      .pipe(
+        map(res => {
+          console.log(res ? null : {unnownBranch: true});
+          return res ? null : {unnownBranch: true};
+        })
+      );
   }
 
   calculateTotal(value: Item[]) {
