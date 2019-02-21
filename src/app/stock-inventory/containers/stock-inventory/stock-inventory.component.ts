@@ -55,8 +55,8 @@ export class StockInventoryComponent {
     return this.stockInventoryService.checkBranchId(control.value)
       .pipe(
         map(res => {
-          console.log(res ? null : {unnownBranch: true});
-          return res ? null : {unnownBranch: true};
+          console.log(res ? null : {unknownBranch: true});
+          return res ? null : {unknownBranch: true};
         })
       );
   }
