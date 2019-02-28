@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mail-folder',
@@ -7,23 +9,14 @@ import { Component } from '@angular/core';
 })
 export class MailFolderComponent {
 
-  messages = [
-    {
-      id: 1, 
-      folder: 'Inbox',
-      from: 'Jane Smith',
-      summary: 'Lorem ipsum dolor si amet',
-      timestamp: 1487848162905
-    },
-    {
-      id: 2,
-      folder: 'Inbox',
-      from: 'Rick Sanchez',
-      summary: "Hey Morty! Go away from class right now, i am waiting for you outside, let's go. In and out. Twenty minute adventure",
-      timestamp: 1487848162905
-    }
-  ];
+  data;
+  // folderTitle: Observable<string> = this.route.params;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    this.route.data.subscribe(res => {
+      console.log(res);
+      this.data = res.setup;
+    });
+  }
 
 }

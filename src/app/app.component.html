@@ -9,8 +9,8 @@
     <div class="row">
         <div class="col s3">
             <ul class="collection">
-                <li class="collection-item"><a routerLink="inbox" routerLinkActive="active">Inbox</a></li>
-                <li class="collection-item"><a routerLink="trash" routerLinkActive="active">Trash</a></li>
+                <li class="collection-item"><a [routerLink]="['/folder/inbox']" routerLinkActive="active">Inbox</a></li>
+                <li class="collection-item"><a [routerLink]="['/folder/trash']" routerLinkActive="active">Trash</a></li>
             </ul>            
         </div>
         <div class="col s9">

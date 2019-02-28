@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MailFolderComponent,
     resolve: {
       setup: MailFolderService
-    }
+    },
   }
 ];
 

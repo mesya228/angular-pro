@@ -9,22 +9,12 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 export class MailFolderService {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<null | HttpErrorResponse> {
-    console.log('route', route);
-    console.log('state', state);
-    return new Observable((observer: Observer<null | HttpErrorResponse>) => {
-      forkJoin(
-        this.getFolders()
-      )
-      .subscribe(([folders]) => {
-        observer.next(null);
-        observer.complete();
-      });
-    });
+    return this.getFolders(route.params['name'])
   }
 
   constructor(private http: HttpClient) { }
 
-  getFolders(): Observable<any> {
-    return this.http.get('http://localsorage:8080/');
+  getFolders(state: string): Observable<any> {
+    return this.http.get('http://localhost:8080/'+state);
   }
 }
