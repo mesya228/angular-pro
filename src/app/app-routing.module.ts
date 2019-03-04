@@ -6,6 +6,15 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'folder/inbox'
+  },
+  {
+    path: 'folder',
+    loadChildren: './mail/mail.module#MailModule'
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'folder/inbox'
   }
 ];
 

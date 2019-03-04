@@ -10,11 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 export class MailFolderComponent {
 
   data;
-  // folderTitle: Observable<string> = this.route.params;
+  title: string;
 
   constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe(res => {
+      this.title = res.name;
+    });
     this.route.data.subscribe(res => {
-      console.log(res);
       this.data = res.setup;
     });
   }

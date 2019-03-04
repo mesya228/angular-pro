@@ -1,6 +1,17 @@
 <div class="mail-app">
-  <router-outlet
-    (activate)="onActivate($event)"
-    (deactivate)="onDeactivate($event)">
-  </router-outlet>
+  <div class="row">
+    <div class="col s6">
+      <router-outlet
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)">
+      </router-outlet>
+    </div>
+    <div class="col s6">
+      <router-outlet
+        name="pane"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)">
+      </router-outlet>
+    </div>
+  </div>
 </div>
