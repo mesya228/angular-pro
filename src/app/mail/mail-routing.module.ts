@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MailFolderComponent } from './containers/mail-folder/mail-folder.component';
-import { MailFolderService } from './containers/mail-folder/mail-folder.service';
 import { MailViewComponent } from './components/mail-view/mail-view.component';
+import { MailFolderResolver } from './containers/mail-folder/mail-folder.resolver';
+import { MailViewResolver } from './components/mail-view/mail-view.resolver';
 
 const routes: Routes = [
   {
-    path: ':name', 
-    children: [
-      {
-        path: '',
-        component: MailFolderComponent,
-        resolve: {
-          setup: MailFolderService
-        },
-      },
-          {
-            path: 'message/:id', 
-            component: MailViewComponent,
-            outlet: 'pane'
-          }
-    ]
+    path: 'folder/:name',
+    component: MailFolderComponent,
+    resolve: {
+      setup: MailFolderResolver
+    },
   },
+  {
+    path: 'message/:id', 
+    component: MailViewComponent,
+    outlet: 'pane',
+    resolve: {
+      setup: MailViewResolver
+    }
+  }
 ];
 
 @NgModule({

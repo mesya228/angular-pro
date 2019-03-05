@@ -5,7 +5,7 @@ import { MailAppComponent } from './components/mail-app/mail-app.component';
 import { MailItemComponent } from './components/mail-item/mail-item.component';
 import { MailFolderComponent } from './containers/mail-folder/mail-folder.component';
 import { MailRoutingModule } from './mail-routing.module';
-import { MailFolderService } from './containers/mail-folder/mail-folder.service';
+import { MailFolderService } from './containers/services/mail-folder/mail-folder.service';
 import { MailViewComponent } from './components/mail-view/mail-view.component';
 
 @NgModule({

@@ -7,14 +7,14 @@
         </div>
     </nav>
     <div class="row">
-        <div class="col s3">
-            <ul class="collection">
-                <li class="collection-item"><a [routerLink]="['/folder/inbox']" routerLinkActive="active">Inbox</a></li>
-                <li class="collection-item"><a [routerLink]="['/folder/trash']" routerLinkActive="active">Trash</a></li>
+        <div class="col s6 m2">
+            <ul class="nav">
+                <li class="nav-item" [routerLink]="[{outlets: {primary: 'folder/inbox', pane: null}}]" routerLinkActive="active"><a>Inbox</a></li>
+                <li class="nav-item" [routerLink]="[{outlets: {primary: 'folder/trash', pane: null}}]" routerLinkActive="active"><a>Trash</a></li>
             </ul>            
         </div>
         <div class="col s9">
-            <router-outlet></router-outlet>
+            <app-mail-app></app-mail-app>
         </div>
     </div>
 </div>

@@ -1,9 +1,13 @@
-<div>
+<li class="mail-item"
+  #item
+  [style.border-radius]="setItemStyle()"
+  [routerLink]="['', {outlets:{pane:['message', message.id]}}]"
+  routerLinkActive="active">
   <div class="row">
-    <div class="col s10" [routerLink]="[{outlets:{pane:['message/1']}}]">{{message.from}}</div>
+    <div class="col s10">{{message.from}}</div>
     <div class="col s2">{{message.timestamp | date: 'shortDate'}}</div>
   </div>
   <div class="row">
     <div class="col">{{message.summary}}</div>
   </div>
-</div>
+</li>
