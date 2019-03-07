@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mail-view',
@@ -8,13 +8,18 @@ import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 })
 export class MailViewComponent {
 
+  reply: string = '';
   mail;
 
   constructor(private route: ActivatedRoute) {
     this.route.data.subscribe(res => {
       this.mail = res.setup;
-      console.log(res.setup);
+      this.reply = '';
     });
+  }
+
+  sendReply() {
+    console.log('Sended:', this.reply);
   }
 
 }

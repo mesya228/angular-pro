@@ -1,0 +1,22 @@
+<div class="mail-view">
+  <div>
+    <h2>{{mail.from}}</h2>
+    <p>{{mail.summary}}</p>
+  </div>
+  <div class="mail-reply">
+    <form (ngSubmit)="sendReply()">
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate" name="reply"
+              [(ngModel)]="reply">
+            <label for="first_name">Type your reply</label>
+          </div>
+        </div>
+        <div class="col s12">
+          <button class="waves-effect waves-light btn">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <li class="mail-item"
   #item
   [style.border-radius]="setItemStyle()"
-  [routerLink]="['', {outlets:{pane:['message', message.id]}}]"
+  [routerLink]="['/mail', {outlets:{pane:['message', message.id]}}]"
   routerLinkActive="active">
   <div class="row">
     <div class="col s10">{{message.from}}</div>

@@ -1,0 +1,23 @@
+a.active
+    text-decoration: underline
+.navigation
+    background-color: var(--orange-bg)
+.nav-item
+    cursor: pointer
+    padding: 10px
+    border-bottom: 1px black solid
+    &:first-child
+        border-radius: 10px 10px 0 0
+    &:last-child
+        border-radius: 0 0 10px 10px
+    &:focus
+        outline: none
+    &:hover
+        background-color: var(--orange-hover-bg)
+    & a
+        color: #000
+    &.active
+       background-color: var(--orange-bg)
+       border-bottom: 1px transparent solid
+    &.active a
+        color: #fff
