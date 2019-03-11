@@ -38,23 +38,15 @@ const folders = {
 
 http.createServer(function(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:9876');
   res.setHeader('Content-Type', 'application/json'); 
 
   const path = url.parse(req.url, true).pathname;
   const q = url.parse(req.url, true).query;
   
   switch(path) {
-    case '/inbox': res.end(JSON.stringify(folders.inbox)); break;
-    case '/trash': res.end(JSON.stringify(folders.trash)); break;
-    case '/message': {
-      for (var key in folders) {
-        var folder = folders[key];
-        for (var j = 0; j < folder.length; j++) {
-          if (folder[j].id == q.id)
-            res.end(JSON.stringify(folder[j]));
-        }
-      }
-    } break;
+    case '/items': res.end(JSON.stringify(folders.inbox)); break;
+    case '/products': res.end(JSON.stringify(folders.trash)); break;
     default: res.end(); break;
   }
   
