@@ -1,0 +1,27 @@
+<div class="stock-inventory" *ngIf="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <app-stock-branch
+      [parent]="form">
+    </app-stock-branch>
+
+    <app-stock-selector
+      [parent]="form"
+      [products]="products"
+      (addedStock)="addStock($event)">
+    </app-stock-selector>
+    
+    <app-stock-products
+      [parent]="form"
+      [totals]="totals"
+      [productsMap]="productsMap"
+      (deletedStock)="deleteStock($event)">
+    </app-stock-products>
+
+    <button class="btn"
+      [disabled]="form.invalid">
+      Submit
+    </button>
+
+  </form>
+</div>
