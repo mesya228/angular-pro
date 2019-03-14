@@ -39,14 +39,20 @@ export class StockInventoryService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>('http://localhost:8080/products')
       .pipe(
-        map(products => products)
+        map(products => {
+          this.products = products;
+          return products;
+        })
       )
   }
 
   getCarts(): Observable<Item[]> {
     return this.http.get<Item[]>('http://localhost:8080/cart')
       .pipe(
-        map(carts => carts)
+        map(carts => {
+          this.carts = carts;
+          return carts;
+        })
       )
   }
 

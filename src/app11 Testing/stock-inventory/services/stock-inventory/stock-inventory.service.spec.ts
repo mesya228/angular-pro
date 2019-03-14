@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
 import { StockInventoryService } from './stock-inventory.service';
-
 import { HttpClientModule } from '@angular/common/http';
 
 describe('StockInventoryService', () => {
@@ -11,7 +10,7 @@ describe('StockInventoryService', () => {
   beforeEach(() => {
     const bed = TestBed.configureTestingModule({
       imports: [
-        HttpClientModule
+        HttpClientModule,
       ],
       providers: [
         StockInventoryService
@@ -21,14 +20,7 @@ describe('StockInventoryService', () => {
   });
 
   it('should be created', () => {
+    service.resolve();
     expect(service).toBeTruthy();
-  }); 
-
-  // it('should get cart items', (done: DoneFn) => {
-  //   service.getCartItems().subscribe(res => {
-  //     expect(res.length).toBe(3);
-  //     done();
-  //   });
-  // });
-
+  });
 });

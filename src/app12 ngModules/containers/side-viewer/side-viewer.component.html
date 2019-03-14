@@ -1,0 +1,5 @@
+<div class="viewer">
+  <div *ngFor="let item of items$ | async">
+    {{item.name}} {{item.price | currency: 'USD'}}
+  </div>
+</div>
