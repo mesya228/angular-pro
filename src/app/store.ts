@@ -8,6 +8,7 @@ const state: State = {
 };
 
 export class Store {
+    
     private subject = new BehaviorSubject<State>(state);
     private store = this.subject.asObservable();
 

@@ -1,0 +1,8 @@
+<div class="songs-favourites">
+  <h1>Favourites</h1>
+  <ul>
+    <li *ngFor="let song of favourites$ | async">
+      {{song.artist}} {{song.track}}
+    </li>
+  </ul>
+</div>

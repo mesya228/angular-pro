@@ -1,5 +1,7 @@
 import { Component} from '@angular/core';
+
 import { Store } from './store';
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,7 @@ import { Store } from './store';
 })
 export class AppComponent {
 
-  counter: number = 0;
+  todos$ = this.store.select('todos');
 
   constructor(private store: Store) {
     this.store.set('todos', [
