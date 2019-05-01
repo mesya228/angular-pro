@@ -1,5 +1,6 @@
 var http = require('http');
 var url = require('url');
+var qs = require('querystring');
 
 const songs = [
   {
@@ -76,14 +77,41 @@ const songs = [
 
 http.createServer(function(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.setHeader('Content-Type', 'application/json'); 
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, GET', 'OPTIONS');
 
   const path = url.parse(req.url, true).pathname;
   const q = url.parse(req.url, true).query;
   
-  switch(path) {
-    case '/songs': res.end(JSON.stringify(songs)); break;
-    default: res.end(); break;
+  if (path == '/songs') {
+    res.end(JSON.stringify(songs));
+  } else if (path.match('/song/')) {
+
+    if (req.method == 'PUT') {
+      var body = '';
+        req.on('data', function (data) {
+          body += data;
+        });
+        req.on('end', function () {
+          body = JSON.parse(body);
+          for (var i = 0; i < songs.length; i++) {
+            if (songs[i].id == body.id)
+              songs[i] = body;
+          }
+          res.end(JSON.stringify(true));
+        });
+    } else if (req.method == 'GET') {
+      for (var i = 0; i < songs.length; i++) {
+        if (songs[i].id == path.split('/song/')[1])
+          res.end(JSON.stringify(songs[i]));
+      }
+    } else {
+      res.end();
+    }
+
+  } else {
+    res.end();
   }
   
 }).listen(8080);

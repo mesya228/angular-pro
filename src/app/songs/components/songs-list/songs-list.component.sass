@@ -1,0 +1,45 @@
+.songs-list-container
+    .songs-list__title
+        background-color: #502673
+        text-align: center
+        padding: 10px
+        border-radius: 10px 10px 0 0
+        margin: 0
+        color: #fff
+    .songs-list
+        margin: 0
+    .song-item
+        display: flex
+        position: relative
+        background-color: #fff
+        padding: 10px
+        transition: .5s ease
+        &:nth-child(2n)
+            background-color: #efefef
+        &:last-child
+            border-radius: 0 0 10px 10px
+        .song__artist
+            color: #502673
+            font-size: 18px
+            font-weight: bold
+        .song__track
+            color: #969696
+        .song__info
+            width: 100%
+            float: left
+        .song__additional
+            float: right
+            width: 25%
+            .additional-item
+                cursor: pointer
+                font-size: 17px
+                color: #969696
+                transition: .5s ease
+                &:hover
+                    color: #502673
+            .active
+                font-weight: bold
+                color: #502673
+                &:hover
+                    color: #969696
+        

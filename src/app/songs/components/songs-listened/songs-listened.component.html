@@ -1,8 +1,7 @@
 <div class="songs-listened">
-  <h1>Listened</h1>
-  <ul>
-    <li *ngFor="let song of listened$ | async">
-      {{song.artist}} {{song.track}}
-    </li>
-  </ul>
+  <app-songs-list
+    [list]="listened$ | async"
+    (toggle)="onToggle($event)">
+    Listened
+  </app-songs-list>
 </div>

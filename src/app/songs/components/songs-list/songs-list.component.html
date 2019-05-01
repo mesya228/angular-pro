@@ -1,0 +1,25 @@
+<div class="songs-list-container">
+    <h3 class="songs-list__title">
+        <ng-content></ng-content>
+    </h3>
+    <ul class="songs-list">
+        <li class="song-item" *ngFor="let item of list; trackBy: getTrackById">
+            <div class="song__info">
+                <p class="song__artist">{{item.artist}}</p>
+                <span class="song__track">{{item.track}}</span>
+            </div>
+            <div class="song__additional">
+                <p class="additional-item"
+                    [class.active]="item.listened"
+                    (click)="toggleItem(item, 'listened')">
+                    Listened
+                </p>
+                <p class="additional-item"
+                    [class.active]="item.favourites"
+                    (click)="toggleItem(item, 'favourites')">
+                    Favourite
+                </p>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import {
   SongsFavouritesComponent,
   SongsListenedComponent,
-  SongsPlaylistComponent
+  SongsPlaylistComponent,
+  SongsListComponent
 } from './components';
 
 import { SongsService } from './services/songs.service';
@@ -12,7 +13,8 @@ import { SongsService } from './services/songs.service';
 const COMPONENTS = [
   SongsFavouritesComponent,
   SongsListenedComponent,
-  SongsPlaylistComponent
+  SongsPlaylistComponent,
+  SongsListComponent
 ];
 
 @NgModule({
@@ -20,7 +22,7 @@ const COMPONENTS = [
     CommonModule
   ],
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
   ],
   providers: [
     SongsService

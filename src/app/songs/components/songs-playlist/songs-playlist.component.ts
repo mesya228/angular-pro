@@ -22,6 +22,10 @@ export class SongsPlaylistComponent implements OnInit, OnDestroy {
     private store: Store
   ) { }
 
+  onToggle(event) {
+    this.songsService.toggleSongInfo(event)
+  }
+
   ngOnInit() {
     this.playlist$ = this.store.select('playlist');
     this.playlistSubscription = this.songsService.getPlaylist$.subscribe();

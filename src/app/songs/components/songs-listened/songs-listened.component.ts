@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Store } from 'src/app/store';
 import { filter, map } from 'rxjs/operators';
+import { SongsService } from '../../services/songs.service';
 
 @Component({
   selector: 'app-songs-listened',
@@ -15,8 +16,13 @@ export class SongsListenedComponent implements OnInit {
   listened$: Observable<any>;
 
   constructor(
-    private store: Store
+    private songsService: SongsService,
+    private store: Store,
   ) { }
+
+  onToggle(event) {
+    this.songsService.toggleSongInfo(event)
+  }
 
   ngOnInit() {
     this.listened$ = this.store.select('playlist')
@@ -24,7 +30,6 @@ export class SongsListenedComponent implements OnInit {
         filter(Boolean),
         map(playlist => playlist.filter(song => song.listened))
       );
-
   }
 
 }

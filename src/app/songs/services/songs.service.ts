@@ -20,4 +20,16 @@ export class SongsService {
     private http: HttpClient,
     private store: Store,
   ) { }
+
+  toggleSongInfo(toggledSong) {
+    this.http.put('http://localhost:8080/song/'+toggledSong.id, toggledSong).subscribe(() => {
+      const playlist = this.store.value.playlist.map(song => {
+        if (toggledSong.id == song.id)
+          return {...song, ...toggledSong}
+        else
+          return song
+      });
+      this.store.set('playlist', playlist);
+    });
+  }
 }
