@@ -2,6 +2,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "store": ["src/app/store.ts"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -17,6 +20,6 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
   }
 }

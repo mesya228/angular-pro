@@ -1,10 +1,15 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-
 import { pluck } from 'rxjs/operators';
+
+import { State } from './state';
+
+const state: State = {
+    playlist: undefined
+};
 
 export class Store {
     
-    private subject = new BehaviorSubject<any>({});
+    private subject = new BehaviorSubject<State>(state);
     private store = this.subject.asObservable();
 
     get value() {
