@@ -1,3 +1,21 @@
 <div class="app">
-    <h1>Hello mesya!</h1>
+
+    <nav>
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="sass.html" translate>HOME</a></li>
+                <li><a href="badges.html" translate>NEWS</a></li>
+                <li><a href="collapsible.html" translate>PROFILE</a></li>
+            </ul>
+            <div class="right">
+                <a class='dropdown-trigger btn' data-target='dropdown1'>{{activeLanguage}}</a>
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li class="dropdown-content__item" (click)="changeLang('en')">English</li>
+                    <li class="dropdown-content__item" (click)="changeLang('ru')">Русский</li>
+                    <li class="dropdown-content__item" (click)="changeLang('uk')">Український</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
 </div>
